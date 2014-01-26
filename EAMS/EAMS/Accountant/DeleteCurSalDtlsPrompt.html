@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Delete Current Salary details</title>
+<script type="text/javascript" src="../JavaScript/validate.js"></script>
+<script language="javascript">
+function validate()
+{
+	setlyear();
+	with(document.f)
+	{
+		if(checkYear(fyear))
+		{
+			return false;
+		}
+		if(month.value=="")
+		{
+			alert("Select the month ");
+			return false;
+		}
+		if(ewise.checked==true)
+		{
+			if(empid.value=="")
+			{
+				alert("Enter employee id");
+				return false; 
+			}
+		}
+	}
+	if(confirm(" Are you sure to delete details" ))
+		return true;
+	else
+		return false;
+}
+function setlyear()
+{
+	document.f.lyear.value=parseInt(document.f.fyear.value)+1;	
+}
+function enableeid()
+{
+	if(document.f.ewise.checked==true)
+	{
+		document.f.empid.disabled=false;		
+	}
+	if(document.f.ewise.checked==false)
+	{
+		document.f.empid.value="";
+		document.f.empid.disabled=true;		
+	}	
+}
+</script>
+</head>
+<body background="../Images/bg87.jpeg">
+<br><br><br>
+<form name="f" method="post" action="../JSP/deletecursaldtls.jsp" onsubmit="return validate()">
+<table align="center" cellspacing="20px">
+<caption><b>Enter details to delete salary details</b><br><br></caption>
+<tr>
+<td><b>Financial Year :</b></td>
+<td><input type="text" name="fyear" size="4" onChange="setlyear()"></input>
+- <input type="text" name="lyear" size="4"></input></td>
+</tr>
+<tr>
+<td><b>Month :</b></td>
+<td>
+<select name="month">
+<option selected></option>
+<option>Apr</option>
+<option>May</option>
+<option>Jun</option>
+<option>Jul</option>
+<option>Aug</option>
+<option>Sep</option>
+<option>Oct</option>
+<option>Nov</option>
+<option>Dec</option>
+<option>Jan</option>
+<option>Feb</option>
+<option>Mar</option>
+</select>
+</td>
+</tr>
+<tr>
+<td><input type="checkbox" name="ewise" onchange="enableeid()"></input><b>Employee wise</b></td>
+<td><b>Employee ID :</b>&nbsp;&nbsp;<input type="text" name="empid" disabled="disabled"></input></td>
+</tr>
+<tr>
+<td align="center" colspan="2"><input type="Submit" value="Submit"></input></td>
+</tr>
+</table>
+</form>
+</body>
+</html>

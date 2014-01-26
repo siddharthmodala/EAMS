@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Employee Salary Report</title>
+<script src="../JavaScript/validate.js" type="text/javascript"></script>
+<script language="javascript">
+function validate()
+{
+	setlyear();
+	with(document.esr)
+	{
+		if(isEmpty(empid,"Enter employee id"))
+		{
+			return false;
+		}	 
+		if(checkYear(fyear))
+		{
+			return false;
+		}
+		var d=new Date();
+		if(fyear.value==d.getFullYear() && d.getMonth()<3)
+		{
+			alert("Report can't be generated as financial year not completed");
+			return false;
+		}	
+		if(fmonth.value=="" || lmonth.value=="")
+		{
+			alert("Select both the months");
+			return false;
+		}
+		if(parseInt(fmonth.value)>parseInt(lmonth.value))
+		{
+			alert("Select months in proper order");
+			return false;
+		}
+	}
+	return true;
+}
+function setlyear()
+{
+	document.esr.lyear.value=parseInt(document.esr.fyear.value)+1;	
+}
+</script>
+</head>
+<body background="../Images/bg87.jpeg">
+<br><br>
+<form name="esr" method="post" action="../JSP/empsalaryreport.jsp" onSubmit="return validate()">
+<table align="center" cellspacing="20px">
+<caption><b>Employee Salary Report</b><br><br></caption>
+<tr><td><b>Employee ID :</b></td><td><input type="text" name="empid"></input></td></tr>
+<tr><td><b>Financial year :</b></td>
+<td><input type="text" name="fyear" size="4" onChange="setlyear()"></input>
+ - <input type="text" name="lyear" size="4"></input></td>
+</tr>
+<tr>
+<td><b>From months :</b></td>
+<td><select name="fmonth">
+<option selected></option>
+<option value="1">Apr</option>
+<option value="2">May</option>
+<option value="3">Jun</option>
+<option value="4">Jul</option>
+<option value="5">Aug</option>
+<option value="6">Sep</option>
+<option value="7">Oct</option>
+<option value="8">Nov</option>
+<option value="9">Dec</option>
+<option value="10">Jan</option>
+<option value="11">Feb</option>
+<option value="12">Mar</option>
+</select> &nbsp;&nbsp;<b>to</b>&nbsp;&nbsp;
+<select name="lmonth">
+<option selected></option>
+<option value="1">Apr</option>
+<option value="2">May</option>
+<option value="3">Jun</option>
+<option value="4">Jul</option>
+<option value="5">Aug</option>
+<option value="6">Sep</option>
+<option value="7">Oct</option>
+<option value="8">Nov</option>
+<option value="9">Dec</option>
+<option value="10">Jan</option>
+<option value="11">Feb</option>
+<option value="12">Mar</option>
+</select></td>
+</tr>
+<tr><td align="center" colspan="3"><input type="Submit" value="Generate Report"></input></td></tr>
+</table>
+</form>
+</body>
+</html>

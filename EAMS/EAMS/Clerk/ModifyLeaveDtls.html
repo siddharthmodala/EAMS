@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>Leave Type Prompt</title>
+<script language="javascript">
+function validate(button)
+{
+	with(button)
+	{		
+		if(document.f.empid.value=="")
+		{
+			alert("enter Employee ID");
+			return false;
+		}
+		var name=button.value;				
+		if(name=="Casual Leaves")
+		{
+			document.f.ltype.value="CLs";
+		}
+		else if(name=="Earned Leaves")
+		{
+			document.f.ltype.value="ELs";
+		}
+		else if(name=="Half Paid Leaves")
+		{
+			document.f.ltype.value="HPLs";
+		}
+		else if(name=="Medical Leaves")
+		{
+			document.f.ltype.value="MLs";
+		}
+		else if(name=="Special Casual Leaves")
+		{
+			document.f.ltype.value="SCLs";
+		}
+		else if(name=="Maternity Leave")
+		{
+			document.f.ltype.value="MTLs";
+		}
+	}			
+	document.f.submit();
+}
+</script>
+</head>
+<body background="../Images/bg85.jpeg">
+<br><br><br><br>
+<form name="f"  method="post" action="../JSP/modifyleavedtls.jsp">
+<table  align="center" cellspacing="20px">
+<caption><b>Select Leave Type</b></caption>
+<tr>
+<td colspan="3" align="center"><b>Enter EmpId : &nbsp;&nbsp;</b><input type="text" name="empid"></input></td>
+</tr>
+<tr>
+<td><input type="Button" name="cl" value="Casual Leaves" onclick="validate(this)"></td><td><pre>    </pre></td>
+<td><input type="Button" name="el" value="Earned Leaves" onclick="validate(this)"></td>
+</tr>
+<tr>
+<td><input type="Button" name="hpl" value="Half Paid Leaves" onclick="validate(this)"></td><td></td>
+<td><input type="Button" name="ml " value="Medical Leaves" onclick="validate(this)"></td>
+</tr>
+<tr>
+<td><input type="Button" name="scl" value="Special Casual Leaves" onclick="validate(this)"></td><td></td>
+<td><input type="Button" name="mtl" value="Maternity Leave" onclick="validate(this)"></td>
+</tr>
+</table>
+<input type="hidden" name="ltype" value=""></input>
+</form>
+</body>
+</html>	

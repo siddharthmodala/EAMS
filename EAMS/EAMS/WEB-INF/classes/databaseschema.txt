@@ -1,0 +1,288 @@
+In user as 	'System' create the database by.......
+
+create user eams  identified by eams;
+grant all privilege to eams;
+
+_______________________________________________________
+In user as  'eams'  create the tables as follows...............
+
+ create table Login (
+   userid varchar2(20),
+   password varchar2(20),
+   accesstype varchar2(20),
+  primary key(userid) );
+
+
+create table Employees (
+ empid varchar2(20),
+ ename varchar2(50),
+ fname varchar2(50),
+ mname varchar2(50),
+ dob date,
+ sex varchar2(7),
+ bloodgroup varchar2(7),
+ caste varchar2(8),
+ religion varchar2(15),
+ paddress varchar2(200),
+ caddress varchar2(200),
+ phno number(15),
+ cellno number(15),
+ emailid varchar2(50),
+ post varchar2(30),
+ designation varchar2(60),
+ department varchar2(20),
+ doj date,
+ sbac varchar2(20),
+ panno varchar2(16),
+ pfno varchar2(16),
+ paytype varchar2(18),
+ scale varchar2(80),
+ basic number,
+ moi varchar2(4),
+specializations varchar2(200),
+teachingexp number(3),
+researchexp number(3),
+industrialexp number(3),
+otherexp number(3),
+vnrvjietexp number(3),
+photo long raw,
+primary key(empid));
+
+
+create table RemEmployees (
+ empid varchar2(20),
+ ename varchar2(50),
+ fname varchar2(50),
+ mname varchar2(50),
+ dob date,
+ sex varchar2(7),
+ bloodgroup varchar2(7),
+ caste varchar2(8),
+ religion varchar2(15),
+ paddress varchar2(200),
+ caddress varchar2(200),
+ phno number(15),
+ cellno number(15),
+ emailid varchar2(50),
+ post varchar2(30),
+ designation varchar2(60),
+ department varchar2(20),
+ doj date,
+ sbac varchar2(20),
+ panno varchar2(16),
+ pfno varchar2(16),
+ paytype varchar2(18),
+ scale varchar2(80),
+ basic number,
+ moi varchar2(4),
+specializations varchar2(200),
+teachingexp number(3),
+researchexp number(3),
+industrialexp number(3),
+otherexp number(3),
+vnrvjietexp number(3),
+photo long raw,
+dol date,
+primary key(empid));
+
+create table Eduqualifications(
+empid varchar2(20),
+degree varchar2(25),
+board varchar2(100),
+yop number(5),
+class varchar2(20),
+percentage number(5,2),
+spec varchar2(50),
+remarks varchar2(200),
+foreign key(empid) references Employees(empid),
+primary key(empid,degree)
+);
+ 
+create table Certificates(
+empid varchar2(20),
+certificate varchar2(50),
+status varchar2(4),
+remarks varchar2(150),
+foreign key(empid) references Employees(empid),
+primary key(empid,certificate)
+);
+
+create table payscales(
+sqno varchar2(5),
+scale varchar2(100),
+primary key(sqno)
+);
+
+ create table PSaldtls (
+ empid varchar2(20),
+ basic number(8),
+ splal number(8),
+ itax number(8),
+ pf number(8),
+ lic number(8),
+ gis number(8),
+ trpt number(8),
+ vehcl number(8),
+ abl number(8),
+ soc number(8),
+ foreign key(empid) references Employees(empid),
+ primary key(empid)
+ );
+
+create table Salary (
+ empid varchar2(20),
+ month varchar2(10),
+ basic number(8),
+ dp number(8),
+ mergebasic number(8),
+ da number(8),
+ hra number(8),
+ cca number(8),
+ splal number(8),
+ arrs number(8),
+ grssal number(10),
+ itax number(8),
+ pf number(8),
+ ptax number(8),
+ lic number(8),
+ gis number(8),
+ lop number(8),
+ trpt number(8),
+ vehcl number(8),
+ abl number(8),
+ soc number(8),
+ others number(8),
+ totdeduction number(10),
+ netsal number(10),
+ primary key (empid,month) );
+
+ create table Leaves (
+ empid varchar2(20),
+ cls number(4),
+ els number(4),
+ hpls number(4),
+ scls number(4),
+ mls number(4),
+  foreign key(empid) references Employees(empid),
+  primary key(empid));
+
+create table RemEmployees(
+ empid varchar2(20),
+);
+
+create table Freezeacc (
+ year number(4),
+ apr  number(1),
+ may  number(1),
+ jun  number(1),
+ jul  number(1),
+ aug  number(1),
+ sep  number(1),
+ oct  number(1),
+ nov  number(1),
+ dec  number(1),
+ jan number(1),
+ feb  number(1),
+ mar  number(1),
+primary key (year) );
+
+
+ create table CCAscale (
+sqno number(2),
+ locca number(9,2),
+ hicca number(9,2),
+ cca number(9,2), 
+primary key(sqno)
+);
+
+
+ create table PTAXscale (
+sqno number(2),
+ lopt number(9,2),
+ hipt number(9,2),
+ ptax number(9,2), 
+primary key(sqno)
+);
+
+create table Limitpercentages (
+ dp number(5,2) not null,
+ da number(5,2) not null,
+ hra number(5,2) not null
+ );
+
+
+ create table LeaveLimits(
+ cls number(4),
+els number(4),
+ hpls number(4),
+ scls number(4),
+ mls number(4)
+);
+ 
+create table Salyear ( 
+year number(4),
+month number(2)
+);
+
+ create table designations(
+ pno number(5),
+ designation varchar2(60),
+primary key(pno));
+
+
+
+insert into Login values ('administrator','administrator','Administrator');
+insert into Login values ('acc','acc','Accountant');
+insert into Login values ('clk','clk','Clerk');
+insert into Login values ('estd','estd','Establishment');
+insert into Login values ('ao','ao','AccountsManager');
+
+
+insert into DESIGNATIONS values('11', 'Professor');
+insert into DESIGNATIONS values('12', 'Associate Professor');
+insert into DESIGNATIONS values('13', 'Assistant Professor(Senior Grade)');
+insert into DESIGNATIONS values('14', 'Senior Assistant Professor');
+insert into DESIGNATIONS values('15', 'Assistant Professor');
+insert into DESIGNATIONS values('16', 'Lecturer');
+insert into DESIGNATIONS values('17', 'Lecturer cum Programmer');
+insert into DESIGNATIONS values('18', 'Research Associate');
+insert into DESIGNATIONS  values('19', 'T and P officer');
+insert into DESIGNATIONS  values('110', 'Librarian');
+insert into DESIGNATIONS values('111', 'Physical Director');
+insert into DESIGNATIONS values('199', 'Others');
+
+insert into DESIGNATIONS values('201', 'Asst. Computer Programmer');
+insert into DESIGNATIONS values('202', 'Jr. Computer Programmer');
+insert into DESIGNATIONS values('203', 'Computer Operator');
+insert into DESIGNATIONS values('204', 'Instructor');
+insert into DESIGNATIONS values('205', 'Sr.Skilled Asst. / Sr.Technician');
+insert into DESIGNATIONS values('206', 'Skilled Assistant');
+insert into DESIGNATIONS values('207', 'Electrician /Plumber');
+insert into DESIGNATIONS values('2099', 'Others');
+insert into DESIGNATIONS values('211', 'Administrative Officer');
+insert into DESIGNATIONS values('212', 'Office Manager');
+insert into DESIGNATIONS values('213', 'Supdts');
+insert into DESIGNATIONS values('214', 'Training Officer');
+insert into DESIGNATIONS values('215', 'Project Assistant');
+insert into DESIGNATIONS values('216', 'Sr. Assistant / Admin. Assistant');
+insert into DESIGNATIONS values('217', 'Jr. Assistant / Jr. Accountant');
+insert into DESIGNATIONS values('218', 'Stenotypist');
+insert into DESIGNATIONS values('219', 'Asst. Librarian');
+insert into DESIGNATIONS values('2110', 'Library Assistant');
+insert into DESIGNATIONS values('2111', 'Trainers');
+insert into DESIGNATIONS values('2112', 'Record Asst. / Attendant ');
+insert into DESIGNATIONS values('2113', 'Security Officer');
+insert into DESIGNATIONS values('2114', 'Drivers');
+insert into DESIGNATIONS values('2115', 'Nurse');
+insert into DESIGNATIONS values('2116', 'House keeper');
+insert into DESIGNATIONS values('2117', 'Site Supervisor');
+insert into DESIGNATIONS values('2118', 'Gardener');
+insert into DESIGNATIONS values('2119', 'Attender / Marker');
+insert into DESIGNATIONS values('2120', 'Helper / SWCC');
+insert into DESIGNATIONS values('2199', 'Others');
+
+
+
+
+
+

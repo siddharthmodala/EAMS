@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>View Permanent Salary Details</title>
+<script language="javascript">
+function validate()
+{
+	if(document.f.viewtype.value=="")
+	{
+		alert("Select view type to view details");
+		return false;
+	}	
+	if(document.f.viewtype.value=="Individual Employee")
+	{
+		if(document.f.empcode.value=="")
+		{
+			alert("Please enter employee code to view details");
+			return false;
+		}
+	}
+	return true;
+}
+function empenable()
+{
+	if(document.f.viewtype.value=="Individual Employee")
+	{
+		document.f.empcode.disabled=false;
+	}
+	else
+	{
+			document.f.empcode.value="";
+			document.f.empcode.disabled=true;
+	}
+}
+</script>
+</head>
+<body background="../Images/bg86.jpeg">
+<br/><br/><br/><br/>
+<form name="f" method="post" action="../JSP/viewpsaldtls.jsp" onSubmit="return validate();">
+	<table align="center" cellspacing="10px">
+	<caption><b>Permanent Salary Details<br><br></br></b></caption>	
+	<tr>
+<td><b>Select the Type of View : </b></td>
+	<td> <select name="viewtype" onchange="empenable()">
+	<option selected></option>	
+	<option>Individual Employee</option>
+	<option>All Employees</option>
+	<option>Teaching</option>
+	<option>Non-Teaching</option>
+	<option>Non-Teaching(Technical)</option>
+	<option>Non-Teaching(Non-Technical)</option>
+	<option value="CSE">CSE-Department</option>
+	<option value="ECE">ECE-Department</option>
+	<option value="IT">IT-Department</option>
+	<option value="ME">ME-Department</option>
+	<option value="CE">CE-Department</option>
+	<option value="EEE">EEE-Department</option>
+	<option value="EIE">EIE-Department</option>
+	<option value="HS">HS-Department</option>
+	<option value="Admin">Administration-Department</option>
+	<option value="Sports">Sports-Department</option>
+	<option value="Library">Library-Department</option>
+	<option >RCC</option>
+	<option >Engg. Cell</option>
+	<option >HouseKeeping</option>		
+	<option >Others</option>	
+	</select> &nbsp;&nbsp; <b>wise</b></td>
+</tr>
+<tr>
+		<td><b>Enter EmpID:</b></td>
+		<td><input type="text" name="empcode" disabled="disabled"></input></td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><input type="submit" value="View Details"></td>
+	</tr>
+	</table>
+</form>
+</body>
+</html>

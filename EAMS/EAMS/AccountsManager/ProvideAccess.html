@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>Provide Access</title>
+<script type="text/javascript" src="../JavaScript/validate.js"></script>
+<script type="text/javascript">
+function validate()
+{
+	with(document.f)
+	{
+		if(isEmpty(empcode,"Empcode field is Empty!!"))
+		return false;
+		if(isEmpty(password,"Password fiels is Empty!!"))
+		return false;
+		if(isEmpty(access,"Access Field is Empty!!"))
+		return false;
+	}
+}
+</script>
+</head>
+<body background="../Images/bg86.jpeg">
+<br><br><br>
+<form name="f" method="post" action="../JSP/provideaccess.jsp" onSubmit="return validate();">
+<table  border="0" align="center" cellspacing="20px">
+<caption><b>Provide Access</b></caption>
+ <tr>
+   	<td><b>Login Id  :</b> </td>
+	<td><input type="text" name="empcode" ></td>
+ </tr>
+ <tr>
+   <td><b>Password  :  </b> </td>
+   <td><input type="password" name="password"></td>
+ </tr>
+<tr>
+	<td><b>Access Permission  :</b> </td>
+	<td> <select name="access">
+		 <option selected></option>
+ 		<option>AccountsManager</option>
+ 		<option>Accountant</option> 		
+ 		</select></td>
+</tr>
+<tr><td align="center" colspan="2">
+<input type="submit"  name="Submit" value="Update">
+</td></tr>
+</table>
+</form>
+</body>
+</html>

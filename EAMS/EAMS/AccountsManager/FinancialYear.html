@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Financial Year Prompt</title>
+<script type="text/javascript" src="../JavaScript/validate.js"></script>
+<script language="javascript">
+function validate()
+{
+	var d=new Date();
+	with(document.cfy)
+	{
+		if(isEmpty(fyear,"Enter the year"))
+			return false;
+		if(isEmpty(lyear,"Enter the year"))
+			return false;
+		if(checkYear(fyear))
+			return false;		
+		if(parseInt(lyear.value)-parseInt(fyear.value)!=1)
+		{			
+			alert("Year values should differ by 1(ascending order)");
+			return false;
+		}			
+		if(parseInt(fyear.value)>d.getFullYear())
+		{
+			alert("Cannot create financial table for year ");
+			return false;
+		}
+		if(parseInt(fyear.value)==d.getFullYear() && d.getMonth()<3)
+		{
+			alert("Cannot create financial table for year ");
+			return false;
+		}						
+	}
+	return true;
+}
+function setlyear()
+{
+	document.cfy.lyear.value=parseInt(document.cfy.fyear.value)+1;	
+}
+</script>
+</head>
+<body background="../Images/bg86.jpeg" >
+<br><br><br>
+<center><b>Financial Year<br><br></b></center>
+<form name="cfy" method="post" action="../JSP/createfyear.jsp" onSubmit="return validate()">
+<table align="center">
+ <caption>Enter the years for new financial year<br><br></br></caption>
+  <tr>
+    <td><b>Financial Year :  From April</b></td>
+    <td><input type="text" name="fyear" size="4" onChange="setlyear()" ></input></td>
+    <td><b>to  March</b><input type="text" name="lyear" size="4" ></input></td>
+  </tr>
+  <tr>
+  <td align="center" colspan="3"> <br></br><input type="Submit" value="Create"></input></td>
+  </tr>
+</table>
+</form>
+</body>
+</html>

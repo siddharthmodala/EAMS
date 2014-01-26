@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Employee Master Prompt</title>
+<script type="text/javascript" src="../JavaScript/validate.js"></script>
+<script type="text/javascript">
+function validate()
+{
+	with (document.f)
+	{
+		if(isEmpty(empcode,"Employee Id!!"))
+		return false;
+		if(isEmpty(cls,"CLS Value!!") || isNotNumber(cls,"Only Numbers Allowed(CLS)"))
+			return false;
+		if(isEmpty(els,"ELS Value!!") || isNotNumber(els,"Only Numbers Allowed(ELS)"))
+			return false;
+		if(isEmpty(hpls,"HPLS Value!!") || isNotNumber(hpls,"Only Numbers Allowed(HPLS)"))
+			return false;
+		if(isEmpty(scls,"SCLS Value!!") || isNotNumber(scls,"Only Numbers Allowed(SCLS)"))
+			return false;
+		if(isEmpty(mls,"MLS Value!!") || isNotNumber(mls,"Only Numbers Allowed(MLS)"))
+			return false;		
+		if(cls.value<0)
+		{
+			alert(" Enter valid casual leaves value");
+			return false;
+		}
+		if(hpls.value<0)
+		{
+			alert(" Enter valid half pay leaves value");
+			return false;
+		}		
+		if(scls.value<0)
+		{
+			alert(" Enter valid special casual leaves value ");
+			return false;
+		}		
+				if(mls.value<0)
+		{
+			alert(" Enter valid medical leaves value");
+			return false;
+		}
+	}
+	return true;
+}
+</script>
+</head>
+<body background="../Images/bg85.jpeg">
+<br><br>
+<form name="f" method="post" action="../JSP/insertleavedtls.jsp" onSubmit="return validate();">
+	<table align="center" cellspacing="10px">
+	<caption><b>Insert Leave Details ( in days )<br><br></br></b></caption>
+	<tr>
+		<td><b>Enter EmpID:</b></td>
+		<td><input type="text" name="empcode"></td>
+	</tr>
+		<tr><td></td></tr>
+	<tr>
+		<td><b>Casual Leaves :</b></td><td><input type="text" name="cls" ></input></td>
+	</tr>
+
+	<tr>
+		<td><b>Earned Leaves :</b></td><td><input type="text" name="els" ></input></td>
+	</tr>
+	<tr>
+		<td><b>Half Pay Leaves :</b></td><td><input type="text" name="hpls" ></input></td>
+	</tr>
+	<tr>
+		<td><b>Special Casual Leaves :</b></td><td><input type="text" name="scls"></input></td>
+	</tr>
+	<tr>
+		<td><b>Medical Leaves:</b></td><td><input type="text" name="mls" ></input></td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><input type="submit" value="Submit"></td>
+	</tr>
+	</table>
+</form>
+</body>
+</html>

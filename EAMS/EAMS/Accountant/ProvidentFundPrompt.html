@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Provident Fund Report</title>
+<script type="text/javascript" src="../JavaScript/validate.js"></script>
+<script type="text/javascript">
+function validate()
+{
+	setlyear();
+	with(document.pfr)
+	{		
+		if(checkYear(fyear))
+		{
+			return false;
+		}
+		if(month.value=="")
+		{
+			alert("Please select the month");
+			return false;
+		}
+		var d=new Date();
+		if(fyear.value==d.getFullYear() && d.getMonth()<3)
+		{
+			alert("Report can't be generated as financial year not completed");
+			return false;
+		}	
+	}	
+	return true;
+}
+function setlyear()
+{
+	document.pfr.lyear.value=parseInt(document.pfr.fyear.value)+1;	
+}
+</script>
+</head>
+<body background="../Images/bg87.jpeg">
+<br><br>
+<center><b>Provident Fund Reports<br><br></b> </center>
+<form name="pfr" method="post" action="../JSP/providentfundreport.jsp" onSubmit="return validate()">
+<table align="center" cellspacing="20px">
+<caption>Enter details to view PF report<br></caption>
+<tr>
+<td><b>Financial year:</b></td>
+<td><input type="text" name="fyear" size="4" onChange="setlyear()"></input>
+ - <input type="text" name="lyear" size="4"></input></td>
+</tr>
+<tr>
+<td><b>Month:</b></td><td><select name="month">
+<option selected></option>
+<option>Apr</option>
+<option>May</option>
+<option>Jun</option>
+<option>Jul</option>
+<option>Aug</option>
+<option>Sep</option>
+<option>Oct</option>
+<option>Nov</option>
+<option>Dec</option>
+<option>Jan</option> 
+<option>Feb</option>
+<option>Mar</option>
+</select></td>
+</tr>
+<tr>
+<td colspan="2" align="center"><br><input type="Submit" value="Generate Report"></input></td>
+</tr>
+</table>
+</form>
+</body>
+</html>

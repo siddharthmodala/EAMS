@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Leave Report</title>
+<script type="text/javascript" src="../JavaScript/validate.js"></script>
+<script language="javascript">
+function validate()
+{
+	with(document.lr)
+	{				
+		if(isEmpty(viewsup,"Select view type"))
+			return false;
+		if(isEmpty(viewsub,"Select category"))
+			return false;
+		if(document.lr.viewsup.value=="Employee wise")
+		{
+		if(isEmpty(empid," enter empid "))
+			return false;
+		}			
+	}
+	return true;
+}
+function setOptions()
+{
+	if(document.lr.viewsup.value=="Department")
+	{
+		document.lr.empid.value="";
+		document.lr.empid.disabled=true;
+		var temp1="<option selected></option>"+
+		"<option>CSE</option>"+
+		"<option>ECE</option>"+		
+		"<option>IT</option>"+
+		"<option>EEE</option>"+
+		"<option>EIE</option>"+
+		"<option>ME</option>"+
+		"<option>CE</option>"+
+		"<option >HS</option>"+
+		"<option >Admin</option>"+
+		"<option >Library</option>"+
+		"<option >Sports</option>"+
+		"<option >RCC</option>"+
+		"<option >Engg. Cell</option>"+
+		"<option >HouseKeeping</option>"+
+		"<option >Others</option>";
+		document.lr.viewsub.innerHTML=temp1;
+	}
+	if(document.lr.viewsup.value=="Designation")
+	{
+		document.lr.empid.value="";
+		document.lr.empid.disabled=true;
+		var temp2="<option selected></option>"+
+		"<option>Teaching</option>"+
+		"<option>Non-Teaching</option>"+
+		"<option>Non-Teaching(Technical)</option>"+
+		"<option>Non-Teaching(Non-Technical)</option>";
+		document.lr.viewsub.innerHTML=temp2;
+	}
+	if(document.lr.viewsup.value=="All")
+	{
+		document.lr.empid.value="";
+		document.lr.empid.disabled=true;		
+		document.lr.viewsub.innerHTML="<option>None</option>";
+	}
+	if(document.lr.viewsup.value=="Employee wise")
+	{
+		document.lr.viewsub.innerHTML="<option>None</option>";
+		document.lr.empid.disabled=false;
+	}	
+}
+</script>
+</head>
+<body background="../Images/bg85.jpeg" onload="setOptions()">
+<br><br>
+<center><b>Leaves Report<br><br></b></center>
+<form name="lr" method="post" action="../JSP/leavereport.jsp" onSubmit="return validate()">
+<table align="center" cellspacing="10px">
+ <caption>Enter view details to generate the leaves report<br><br></br></caption>
+   <tr>
+		<td><b>View By : </b>
+		<select name="viewsup" onchange="setOptions()">
+		<option selected></option>
+		<option >All</option>
+		<option>Department</option>
+		<option>Designation</option>
+		<option>Employee wise</option>
+		</select></td>  
+		<td><b>Category : </b></td>
+		<td><select name="viewsub"></select></td>
+   </tr>
+  	<tr>
+  	<td align="center" colspan="3"><b>Enter EmpId :<input type="text" name="empid" value="" disabled="disabled"></b></td>
+  	</tr>
+  <tr>
+  <td align="center" colspan="3"><br></br><input type="Submit" value="Generate Report"></input></td>
+  </tr>
+</table>
+</form>
+</body>
+</html>

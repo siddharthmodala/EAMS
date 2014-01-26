@@ -1,0 +1,141 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Employee Home </title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<script type="text/javascript">
+ startList = function()
+{
+	 for(var i=0;i<4;i++)
+	 {
+		 var str="nav"+i;
+	navRoot = document.getElementById(str);
+	for (i=0; i<navRoot.childNodes.length; i++) 
+	{
+		node = navRoot.childNodes[i];
+		if (node.nodeName=="LI") 
+		{
+			node.onmouseover=function()
+			{
+				this.className+=" over";
+			};
+			node.onmouseout=function() 
+			{
+				this.className=this.className.replace(" over", "");
+			};
+		}
+	}
+}
+};
+window.onload=startList;
+</script>
+<style type="text/css">
+			  body {
+				font: normal 11px verdana;
+				}
+			ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				width: 250px; /* Width of Menu Items */
+				border-bottom: 1px solid #ccc;
+				}
+
+			ul li {
+			position: relative;
+				}
+				
+			li ul {
+				position: absolute;
+				left:0; /* Set 1px less than menu width */
+				top: 29;
+				display: none;
+				}
+
+			/* Styles for Menu Items */
+			ul li a {
+				display: block;
+				text-decoration: none;
+				color: 0;			/*color for the letters in the link*/
+				padding: 5px;
+				border: 0px solid #ccc; /* IE6 Bug */
+				border-bottom: 1;
+				}
+				a
+				{
+				color: #0;  
+				text-decoration: none;
+				font-size: 12px;
+				display: block;
+				padding: 3px;
+				width: 240px;
+				background-color: greenyellow;	/*background color for the tabs*/
+				border-bottom: 1px solid #fff;
+				}
+						
+			a:hover
+				{
+				background-color: brown ; /*color of the background when the mouse hovers on it*/
+				color: #fff;
+				}
+				
+			li a#current
+				{
+				border-bottom: 3px solid #C0C018;
+				background: #487890 ;
+				color: #fff;
+				}
+			/* Fix IE. Hide from IE Mac \*/
+			 html ul li { float: left; height: 1%; }
+			 html ul li a { height: 1%; }
+			/* End */
+			li:hover ul{ display: block; }
+</style>
+</head>
+<body bgcolor="darkgreen" > 
+<center>	
+			<img src="../Images/banner.jpeg" width="100%" height="100%"></img>
+			<table>
+		<tr>
+			  <td>
+				  <ul id="nav1">
+				  <li><a href="../ShowEmp.html" target="f3">Employees</a> 
+					<ul>
+					</ul> 
+				  </li> 
+				  </ul>
+			  </td>
+			   <td>
+				  <ul id="nav2">
+				  <li><a href="../ShowEmp.html" target="f3">Leave Details</a> 
+					<ul> 
+					  </ul> 
+				  </li> 
+				  </ul>
+			  </td>
+			  	  <td>
+				  <ul id="nav3">
+				  <li><a href="../ShowEmp.html" target="f3">Salary Sheets</a> 
+					<ul>
+					</ul> 
+				  </li> 
+				  </ul>
+			  </td>
+		
+  			  <td>
+				<ul id="nav4">
+				  <li><a href="../ShowEmp.html" target="f3">User Options</a> 
+					<ul>  
+					<li><a href="../ChangePassword.html" target="f3">Change Password</a></li> 
+					<li><a href="../Home.html">Logout</a></li> 
+					</ul> 
+				  </li> 
+				  </ul>
+			  </td>
+			</tr>
+		</table>
+		<iframe name="f3" frameborder="0" width="100%" height="450px"  src="../ShowEmp.html"/>
+	</center>
+</body>
+</html>

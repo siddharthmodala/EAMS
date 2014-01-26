@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Employee Master Prompt</title>
+<script type="text/javascript" src="../JavaScript/validate.js"></script>
+<script type="text/javascript">
+function validate()
+{
+	with (document.f)
+	{
+		if(isEmpty(empcode,"Empcode field is Empty!!"))
+		return false;
+		if(confirm("Confirm Details:\n Emp ID:"+empcode.value))
+			return true;
+		else 
+			return false;
+	}
+}
+</script>
+</head>
+<body background="../Images/bg85.jpeg">
+<br><br><br>
+<form name="f" method="post" action="../JSP/removeleavedtls.jsp" onSubmit="return validate();">
+	<table  align="center" cellspacing="10px">
+	<caption><b>Remove Leave Details<br><br></br></b></caption>
+	<tr>
+		<td><b>Enter EmpID:</b></td>
+		<td><input type="text" name="empcode"></td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><input type="submit" value="Submit"></td>
+	</tr>
+	</table>
+</form>
+</body>
+</html>

@@ -1,0 +1,167 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Accountant Home </title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<script type="text/javascript">
+ startList = function()
+{
+	 for(var i=0;i<4;i++)
+	 {
+		 var str="nav"+i;
+	navRoot = document.getElementById(str);
+	for (i=0; i<navRoot.childNodes.length; i++) 
+	{
+		node = navRoot.childNodes[i];
+		if (node.nodeName=="LI") 
+		{
+			node.onmouseover=function()
+			{
+				this.className+=" over";
+			};
+			node.onmouseout=function() 
+			{
+				this.className=this.className.replace(" over", "");
+			};
+		}
+	}
+}
+};
+window.onload=startList;
+</script>
+<style type="text/css">
+			  body {
+				font: normal 11px verdana;
+				}
+			ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				width: 180px	; /* Width of Menu Items */
+				border-bottom: 1px solid #ccc;
+				}
+
+			ul li {
+			position: relative;
+				}
+				
+			li ul {
+				position: absolute;
+				left:0px; 
+				top: 29;/* Set 1px less than menu width */
+				display: none;
+				}
+
+			/* Styles for Menu Items */
+			ul li a {
+				display: block;
+				text-decoration: none;
+				color: blue;			/*color for the letters in the link*/
+				padding: 5px;
+				border: 0px solid #ccc; /* IE6 Bug */
+				border-bottom: 1;
+				}
+				a
+				{
+				color: #0;  
+				text-decoration: none;
+				font-size: 12px;
+				display: block;
+				padding: 3px;
+				width: 170px;
+				background-color: greenyellow ;	/*background color for the link*/
+				border-bottom: 1px solid #fff;
+				}
+						
+			a:hover
+				{
+				background-color: brown ; /*color of the background when the mouse hovers on it*/
+				color: #fff;
+				}
+				
+			li a#current
+				{
+				border-bottom: 3px solid #C0C018;
+				background: #487890 ;
+				color: #fff;
+				}
+			/* Fix IE. Hide from IE Mac \*/
+			 html ul li { float: left; height: 1%; }
+			 html ul li a { height: 1%; }
+			/* End */
+			li:hover ul{ display: block; }
+</style>
+
+
+</head>
+<body bgcolor="darkgreen" > 
+<center>	
+			<img src="../Images/Abanner1.jpeg" width="100%" height="100%"></img>
+			<table>
+		<tr>
+			  <td>
+				  <ul id="nav1">
+				  <li><a href="../ShowA.html" target="f3">Employees</a> 
+					<ul>
+					<li><a onclick="javascript:window.open('../Establishment/ViewEmpPrompt.html','','menubar=yes,scrollbars=yes,left=200,top=200,width=700,height=300')">View Employee Details</a></li>
+					<li><a onclick="javascript:window.open('./ViewPSalDtlsPrompt.html','','menubar=yes,scrollbars=yes,left=200,top=200,width=700,height=300')">View Permanent Salary Details</a></li>
+					<li><a onclick="javascript:window.open('../Clerk/LeavePrompt.html','','menubar=yes,scrollbars=yes,left=200,top=200,width=700,height=300')">View Leave Reports</a></li>
+					</ul> 
+				  </li> 
+				  </ul>
+			  </td>
+			   <td>
+				  <ul id="nav2">
+				  <li><a href="../ShowA.html" target="f3">Reports</a> 
+					<ul>
+					<li><a onclick="javascript:window.open('AnnualPrompt.html','','menubar=yes,scrollbars=yes,left=100,top=200,width=800,height=300')">Annual Reports</a></li>
+					  <li><a onclick="javascript:window.open('QuarterlyPrompt.html','','menubar=yes,scrollbars=yes,left=100,top=200,width=800,height=300')">Quarterly Reports</a></li>
+					  <li><a onclick="javascript:window.open('MonthlyPrompt.html','','menubar=yes,scrollbars=yes,left=100,top=200,width=800,height=300')">Monthly Reports</a></li>
+					  <li><a onclick="javascript:window.open('BankPrompt.html','','menubar=yes,scrollbars=yes,left=100,top=200,width=800,height=300')">Bank Statement</a></li>
+					  <li><a onclick="javascript:window.open('LicPrompt.html','','menubar=yes,scrollbars=yes,left=100,top=200,width=800,height=300')">LIC Reports</a></li>
+					  <li><a onclick="javascript:window.open('IncomeTaxPrompt.html','','menubar=yes,scrollbars=yes,left=100,top=200,width=800,height=300')">Income Tax Reports</a></li>
+					  <li><a onclick="javascript:window.open('ProvidentFundPrompt.html','','menubar=yes,scrollbars=yes,left=100,top=200,width=800,height=300')">Provident Fund Reports</a></li>
+					  <li><a onclick="javascript:window.open('EmpSalaryRPrompt.html','','menubar=yes,scrollbars=yes,left=100,top=200,width=800,height=300')">Individual Salary Reports</a></li>
+					  </ul>
+					  </li>
+					 </ul>
+			  </td>
+			  <td>
+				  <ul id="nav3">
+				  <li><a href="../ShowA.html" target="f3">Accounts</a> 
+					<ul> 
+					<li><a href="InsertCurSalDtlsPrompt.html" target="f3">Insert Current Salary Details</a></li> 
+					<li><a href="ModifyCurSalDtlsPrompt.html" target="f3">Modify Current Salary Details</a></li>
+					<li><a href="DeleteCurSalDtlsPrompt.html" target="f3">Delete Current Salary Details</a></li> 
+					<li><a href="ViewSalarySheet.html"target="f3">View Salary Sheets</a></li> 
+					</ul> 
+				  </li> 
+				  </ul>
+			  </td>
+			  <td>
+			  <ul id="nav4">
+			  	<li><a href="../ShowA.html" target="f3">Pay Slips</a>
+			  		<ul>
+					<li><a onclick="javascript:window.open('IPaySlip.html','','menubar=yes,scrollbars=yes,left=100,top=200,width=800,height=300')">Individual Pay Slip</a></li>
+					<li><a onclick="javascript:window.open('APaySlip.html','','menubar=yes,scrollbars=yes,left=100,top=200,width=800,height=300')">All Pay Slips</a></li>				  		
+			      	</ul>
+			   </li>
+			   </ul>
+			  </td> 
+  			  <td>
+				<ul id="nav4">
+				  <li><a href="../ShowM.html" target="f3">User Options</a> 
+					<ul>  
+					<li><a href="../ChangePassword.html" target="f3">Change Password</a></li> 
+					<li><a href="../Home.html">Logout</a></li> 
+					</ul> 
+				  </li> 
+				  </ul>
+			  </td>
+			</tr>
+		</table>
+		<iframe name="f3" width="100%" height="500px"  src="../ShowA.html"/>
+	</center>
+</body>
+</html>

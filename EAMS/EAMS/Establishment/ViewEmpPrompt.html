@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>View Prompt</title>
+<script type="text/javascript" src="../JavaScript/validate.js"></script>
+<script type="text/javascript">
+function validate()
+{
+	with(document.f)
+	{	
+		if(isEmpty(emptype,"Select Employees type you want to view"))
+			return false;
+		if(isEmpty(viewtype,"Select type of View "))
+			return false;
+		if(cbyear.checked==true )
+		{
+			if(checkYear(year))
+				return false;
+			if(isEmpty(yeartype,"Select the type year view"))
+				return false;
+		}	
+	}
+}
+function enableYear()
+{
+	if(document.f.cbyear.checked==true )
+	{
+		document.f.year.disabled=false;
+		document.f.yeartype.disabled=false;
+	}
+	if(document.f.cbyear.checked==false )
+	{
+		document.f.year.value="";
+		document.f.yeartype.value="";
+		document.f.year.disabled=true;
+		document.f.yeartype.disabled=true;
+		
+	}
+}
+function addList()
+{
+	if(document.f.emptype.value=="Employees")
+	{
+		var temp1="<option value='DOJ'>Date of Join</option>";		
+		document.f.yeartype.innerHTML=temp1;
+	}
+	if(document.f.emptype.value=="Resigned Employees")
+	{
+		var temp2="<option selected></option>"+
+		"<option value='DOJ'>Date of Join</option>"+		
+		"<option value='DOL'>Date of Leaving</option>";
+		document.f.yeartype.innerHTML=temp2;
+	}
+}
+</script>
+</head>
+<body background="../Images/bg83.jpeg" onload="addList();">
+<br><br><br>
+<form name="f" method="post" action="../JSP/viewempdtls.jsp"  onSubmit="return validate();">
+<table align="center" cellspacing="20px">
+<caption><b>View Employee Details</b></caption>
+<tr>
+<td><b>Select the Employee Type : </b></td>
+	<td><select name="emptype" onChange="addList()">
+	<option selected></option>
+	<option>Employees</option>
+	<option>Resigned Employees</option>
+	</select></td>
+</tr>
+<tr>
+<td><b>Select the Type of View : </b></td>
+	<td> <select name="viewtype">
+	<option selected></option>	
+	<option>All Employees</option>
+	<option>Teaching</option>
+	<option>Non-Teaching</option>
+	<option>Non-Teaching(Technical)</option>
+	<option>Non-Teaching(Non-Technical)</option>
+	<option value="CSE">CSE-Department</option>
+	<option value="ECE">ECE-Department</option>
+	<option value="IT">IT-Department</option>
+	<option value="ME">ME-Department</option>
+	<option value="CE">CE-Department</option>
+	<option value="EEE">EEE-Department</option>
+	<option value="EIE">EIE-Department</option>
+	<option value="HS">HS-Department</option>
+	<option value="Admin">Administration-Department</option>
+	<option value="Sports">Sports-Department</option>
+	<option value="Library">Library-Department</option>
+	<option >RCC</option>
+	<option >Engg. Cell</option>
+	<option >HouseKeeping</option>		
+	<option >Others</option>	
+	</select> &nbsp;&nbsp; <b>wise</b></td>
+</tr>
+<tr>
+<td><input type="checkbox" name="cbyear" onchange="enableYear();"/><b>Year Wise</b></td>
+<td><b>Year:</b><input type="text" name="year" value="" disabled="disabled" size="4"/>
+<b>&nbsp;&nbsp;&nbsp;Based on: &nbsp;&nbsp;&nbsp;</b>
+    <select name="yeartype" disabled="disabled" >
+	<option value="" selected></option>
+	</select></td>
+</tr>
+<tr><td align="center" colspan="2"><input type="submit" name="submit" value="View Details"></td></tr>
+</table>
+</form>
+</body>
+</html>

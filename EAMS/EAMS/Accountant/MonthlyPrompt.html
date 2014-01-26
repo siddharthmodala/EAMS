@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Monthly Report Prompt</title>
+<script type="text/javascript" src="../JavaScript/validate.js"></script>
+<script language="javascript">
+function validate()
+{		
+	setlyear();
+	with(document.mr)
+	{
+		var d=new Date();		
+		if(checkYear(fyear))
+			return false;	
+		if(month.value=="")
+		{
+			alert("Select months value");
+			return false;
+		}					
+		if(fyear.value==d.getFullYear() && d.getMonth()<3)
+		{
+			alert("Report can't be generated as financial year not completed");
+			return false;
+		}				
+		if(isEmpty(viewsup,"Select view type"))
+			return false;
+		if(isEmpty(viewsub,"Select category"))
+			return false;
+	}
+	return true;
+}
+function setOptions()
+{
+	if(document.mr.viewsup.value=="Department")
+	{
+		var temp1="<option selected></option>"+
+		"<option>CSE</option>"+
+		"<option>ECE</option>"+
+		"<option>IT</option>"+
+		"<option>EEE</option>"+
+		"<option>EIE</option>"+
+		"<option>ME</option>"+
+		"<option>CE</option>"+
+		"<option>HS</option>"+
+		"<option >Admin</option>"+
+		"<option >Library</option>"+
+		"<option >Sports</option>"+
+		"<option >RCC</option>"+
+		"<option >Engg. Cell</option>"+
+		"<option >HouseKeeping</option>"+
+		"<option >Others</option>";
+		document.mr.viewsub.innerHTML=temp1;
+	}
+	if(document.mr.viewsup.value=="Post")
+	{
+		var temp2="<option selected></option>"+
+		"<option>Teaching</option>"+
+		"<option>Non-Teaching</option>"+
+		"<option>Non-Teaching(Technical)</option>"+
+		"<option>Non-Teaching(Non-Technical)</option>";
+		document.mr.viewsub.innerHTML=temp2;
+	}
+	if(document.mr.viewsup.value=="Designation")
+	{
+		var temp2="<option selected></option>"+
+		"<optgroup label='Teaching'></optgroup>"+
+		 "<option >Professor </option>"+
+		 "<option > Associate Professor</option>"+
+		 "<option >Assistant Professor(Senior Grade)</option>"+
+		 "<option >Senior Assistant Professor</option>"+
+		 "<option >Assistant Professor</option>"+
+		 "<option >Lecturer</option>"+
+		 "<option >Lecturer cum Programmer</option>"+
+		 "<option >Training & Placement officer</option>"+
+		 "<option >Librarian</option>"+
+		 "<option >Physical Director</option>"+
+		 "<option >Research Associate</option>"+
+		 "<option >Others</option>"+
+		 "<optgroup label='Non-Teaching(Tech)'></optgroup>"+
+		 "<option >Assitant Computer Programmer</option>"+
+			"<option >Junior Computer Programmer</option>"+
+			"<option >Computer Operator</option>"+
+			"<option >Instructor</option>"+
+			"<option>Network & Hardware Programmer</option>"+
+			"<option >Senior Skilled Assistant</option>"+
+			"<option>Senior Technician</option>"+
+			"<option >Skilled Assistant</option>"+
+			"<option>Project Assistant</option>"+
+			"<option >Electrician</option>"+
+			"<option>Plumber</option>"+
+			"<option>Diesel Generator Operator</option>"+
+			"<option >Others</option>"+
+		"<optgroup label='Non-Teaching(Non-Tech)'></optgroup>"+
+		"<option>Administrative Officer</option>"+
+		"<option>Estate Officer</option>"+
+		"<option >Office Manager</option>"+
+		"<option >Office Superintendent</option>"+
+		"<option >Training Officer</option>"+
+		"<option >Registrar</option>"+			
+		"<option>Administrative Assistant</option>"+
+		"<option >Senior Office Assistant</option>"+
+		"<option >Office Assistant</option>"+
+		"<option>Junior Accountant</option>"+
+		"<option >Junior Assitant</option>"+
+		"<option >Stenotypist</option>"+			
+		"<option >Assistant Librarian</option>"+
+		"<option >Library Assistant</option>"+
+		"<option >Library Attendant</option>"+
+		"<option >Supervisor</option>"+
+		"<option >Assistant Supervisor</option>"+		
+		"<option >Record Assistant</option>"+
+		"<option >Senior Telephone Operator</option>"+			
+		"<option >Security Officer</option>"+
+		"<option>Security personnel</option>"+
+		"<option >Trainer - GYM</option>"+
+		"<option >Trainer - Billiard</option>"+
+		"<option >Trainer - BasketBall</option>"+
+		"<option >Trainer - Badminton</option>"+
+		"<option >Trainer - Tabletennis</option>"+
+		"<option >Trainer - Others</option>"+
+		"<option>Attendant</option>"+
+		"<option >Drivers</option>"+
+		"<option >Nurse</option>"+			
+		"<option >House keeper</option>"+
+		"<option >Site Supervisor</option>"+
+		"<option >Gardener</option>"+
+		"<option >Attender</option>"+
+		"<option>Marker</option>"+
+		"<option >Helper</option>"+
+		"<option>Sweeper cum Cleaner</option>"+
+		"<option>Aya</option>"+		
+		"<option >Others</option>";
+		document.mr.viewsub.innerHTML=temp2;
+	}
+	if(document.mr.viewsup.value=="All")
+	{
+		document.mr.viewsub.innerHTML="<option>None</option>";
+	}	
+}
+function setlyear()
+{
+	document.mr.lyear.value=parseInt(document.mr.fyear.value)+1;	
+}
+</script>
+</head>
+<body background="../Images/bg87.jpeg" onload="setOptions()">
+<br><br>
+<center><b>Monthly Reports <br><br></b></center>
+<form name="mr" method="post" onSubmit="return validate()" action="../JSP/monthlyreport.jsp">
+<table align="center" cellspacing="10px">
+<caption>Enter the details to view Monthly Reports<br><br></caption>
+<tr>	
+<td><b>Financial year:</b></td>
+<td><input type="text" name="fyear" size="4" onChange="setlyear()"></input>
+- <input type="text" name="lyear" size="4"></input></td>
+</tr>
+<tr>
+<td><b>Months:</b></td>
+<td><select name="month">
+<option selected></option>
+<option>Apr</option>
+<option>May</option>
+<option>Jun</option>
+<option>Jul</option>
+<option>Aug</option>
+<option>Sep</option>
+<option>Oct</option>
+<option>Nov</option>
+<option>Dec</option>
+<option>Jan</option>
+<option>Feb</option>
+<option>Mar</option>
+</select></td>
+</tr>
+<tr>
+		<td><b>View By : </b>
+		<select name="viewsup" onchange="setOptions()">
+		<option selected></option>
+		
+		<option >All</option>
+		<option>Department</option>
+		<option>Designation</option>
+		<option>Post</option>
+		</select></td>  
+		<td>
+		<b>Category :</b>
+			<select name="viewsub">
+			</select> 
+		</td>
+  </tr>
+<tr><td align="center" colspan="2"><br><input type="Submit" value="Generate Report"></input></td></tr>
+</table>
+</form>
+</body>
+</html>

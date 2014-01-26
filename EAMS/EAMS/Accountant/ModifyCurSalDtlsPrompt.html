@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Employee Code Prompt</title>
+<script src="../JavaScript/validate.js" type="text/javascript"></script>
+<script type="text/javascript">
+function validate()
+{
+	setlyear();
+	var d=new Date();
+	with(document.f)
+	{
+		if(fyear.value=="")
+		{
+			alert("Enter financial year value");
+			return false;
+		}
+		if(month.value=="")
+		{
+			alert("Select month");
+			return false;
+		}
+		if(checkYear(fyear))
+		{
+			return false;
+		}
+		if(fyear.value==d.getFullYear() && d.getMonth()<3)
+		{
+			alert("You can insert details till current month only in financial year");
+			return false;
+		}
+        if(empcode.value=="")
+        {
+            alert(" Please enter the employee ID ");
+		    return false;
+        }
+	}
+return true;
+}
+function setlyear()
+{
+	document.f.lyear.value=parseInt(document.f.fyear.value)+1;	
+}
+</script>
+</head>
+<body background="../Images/bg87.jpeg">
+<br><br><br>
+<form name="f" method="post" action="../JSP/modifycursaldtls.jsp" onSubmit="return validate();">
+	<table align="center" cellspacing="20px">
+	<caption><b>Modify Current Salary Details<br><br></br></b></caption>
+	<tr>
+		<td><b>Financial Year :</b></td>
+		<td><input type="text" name="fyear" size="4" onChange="setlyear()"></input>
+- <input type="text" name="lyear" size="4"></input></td>
+	</tr>
+	<tr>
+		<td><b>Month :</b></td>
+		<td>
+		<select name="month">
+		<option selected></option>
+		<option>Apr</option>
+		<option>May</option>
+		<option>Jun</option>
+		<option>Jul</option>
+		<option>Aug</option>
+		<option>Sep</option>
+		<option>Oct</option>
+		<option>Nov</option>
+		<option>Dec</option>
+		<option>Jan</option>
+		<option>Feb</option>
+		<option>Mar</option>
+		</select></td>
+	</tr>
+	<tr>
+		<td><b>Enter Employee ID :</b></td>
+		<td><input type="text" name="empcode"></td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><input type="submit" value="Submit"></td>
+	</tr>
+	</table>
+</form>
+</body>
+</html>

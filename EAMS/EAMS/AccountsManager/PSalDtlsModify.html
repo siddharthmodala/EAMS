@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Modify Employee Details</title>
+<script type="text/javascript">
+function submitform()
+{
+		if(document.f.empcode.value=="")
+		{
+			alert("Enter employee code");
+			return false;
+		}
+		return true;
+}
+</script>
+</head>
+<body background="../Images/bg86.jpeg">
+<br><br><br>
+<form name="f" method="post" action="../JSP/modifypsaldtls.jsp" onSubmit="return submitform()" >
+	<table align="center" cellspacing="25px" >
+	<caption><b>Modify Permanent Salary details</b><br><br></caption>
+	<tr>
+		<td colspan="2" align="center"><b>Enter EmpID :&nbsp;&nbsp; </b>
+		<input type="text" name="empcode"><br></td>
+	</tr>
+	<tr>
+	<td align="center"><input type="Submit" value="Modify Permanent Salary Details"></input></td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

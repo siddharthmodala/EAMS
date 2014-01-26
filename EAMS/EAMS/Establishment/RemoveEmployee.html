@@ -1,0 +1,61 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Remove Employee Prompt</title>
+<script type="text/javascript" src="../JavaScript/validate.js"></script>
+<script type="text/javascript">
+function validate()
+{
+	with(document.f)
+	{
+		if(isEmpty(empcode,"Employee Code field is Empty!!"))
+			return false;
+		if(checkDay(ddl))
+			return false;
+		if(checkMonth(mml))
+			return false;
+		if(checkYear(yyl))
+			return false;
+		if(confirm("Are You Sure To remove This Employee. \nDetails:\n   Emp code :"+empcode.value+"\n   Leaving Date :"+ddl.value+"-"+mml.value+"-"+yyl.value))
+			return true;
+		else
+			 return false;
+	}
+	}
+</script>
+</head>
+<body background="../Images/bg83.jpeg">
+<br><BR><br>
+<form name="f" method="get" action="../JSP/removeemployee.jsp" onSubmit="return validate();">
+	<table align="center">
+	<caption><b>Remove Employee Details</b></caption>
+	<tr>
+		<td><h4><b>Enter Employee Code:</b> </h4></td>
+		<td><input type="text" name="empcode"></td>	
+	</tr>
+	<tr><td><h4><b>Date of Leaving (dd/mm/yyyy):</b></h4></td><td><input type="text" name="ddl" size="2">
+								<select name="mml" >
+								<option selected></option>
+									<option >Jan</option>
+									<option >Feb</option>
+									<option >Mar</option>
+									<option >Apr</option>
+									<option >May</option>
+									<option >Jun</option>
+									<option >Jul</option>
+									<option >Aug</option>
+									<option >Sep</option>
+									<option >Oct</option>
+									<option >Nov</option>
+									<option >Dec</option>
+								</select>
+								<input type="text" name="yyl" size="4"></td></tr>
+	<tr>
+		<td colspan="2" align="center"><input type="submit" value="Submit"></td>
+	</tr>
+	</table>
+</form>
+</body>
+</html>

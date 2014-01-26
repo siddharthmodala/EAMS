@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>Remove Access prompt</title>
+<script type="text/javascript" src="../JavaScript/validate.js"></script>
+<script type="text/javascript">
+function validate()
+{
+	with(document.f)
+	{
+		if(isEmpty(empcode,"Employee Code field is Empty")
+				return false;
+	}
+}
+</script>
+</head>
+<body background="../Images/bg86.jpeg">
+<br><br><br>
+<form name="f" method="post" action="../JSP/removeaccess.jsp" onSubmit="return validate();">
+<table  align="center" cellspacing="15px"> 
+<caption><b>Remove Access</b></caption>
+<tr><td> <b>Enter UserID :</b></td><td> <input type="text" name="userid"></td></tr>
+<tr><td></td><td><input type="Submit" name="Submit" value=" Submit " ></td></tr>
+</table>
+<input type="hidden" name="type" value="0">
+</form>
+</body>
+</html>
